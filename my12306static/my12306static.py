@@ -136,11 +136,13 @@ def findThefitdata(data):
         time_str = unicode(total_time).encode("utf-8")#将总时间转为str
         time_total_int = totalTimeStrToint(time_str)
         tn_str = unicode(train_number).encode("utf-8")#将uniconde转为str
-        if tn_str.find('G')!=-1:
+        #2018.3.19取消对C_D_G车次的筛选
+        #if tn_str.find('G')!=-1:
+        if 1:
             if time_total_int < fastTrainTime:
                 fastTrainNum = tn_str
                 fastTrainTime = time_total_int
-                continue
+            continue
                 
         elif tn_str.find('D')!=-1:
             if time_total_int < fastTrainTime:
@@ -207,7 +209,7 @@ def get_train_infoto_file():
             if i != j:
                 #print('From:{0},To:{1}'\
                       #.format(capitalCity_list[i],capitalCity_list[j]))
-                datetime = '2018-03-18'
+                datetime = '2018-03-21'
                 querys = joinFromToStringQuery(datetime,\
                                 capitalCity_list[i],\
                                 capitalCity_list[j])
